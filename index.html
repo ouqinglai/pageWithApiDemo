@@ -10,7 +10,7 @@
 </head>
 <body>
   <div id="temp">
-    <button @click="test">213</button>
+    {{ title }} ---- {{ body }}
   </div>
 </body>
 <script>
@@ -18,14 +18,25 @@
     el: '#temp',
     data (){
       return {
-
+        title: '',
+        body: '',
       }
     },
+    created (){
+      setTimeout(() => {
+        this.getIssues(1)
+      }, 1000)
+    },
     methods: {
-      test (){
-        console.log(123123)
+      getIssues (issuesIndex){
+        fetch(`https://api.github.com/repos/ouqinglai/pageWithApiDemo/issues/${ issuesIndex }`).then(res => res.json()).then(res => {
+          if(res){
+            this.title = res.title
+            this.body = res.body
+          }
+        })
       }
-    }
+    },
   })
 </script>
 </html>
