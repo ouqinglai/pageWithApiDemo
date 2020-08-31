@@ -29,7 +29,7 @@
     },
     methods: {
       getIssues (issuesIndex){
-        fetch(`https://api.github.com/repos/ouqinglai/pageWithApiDemo/issues/${ issuesIndex }`).then(res => res.json()).then(res => {
+        fetch(`https://api.github.com/repos/ouqinglai/pageWithApiDemo/issues/${ issuesIndex }?t=${ +new Date }`).then(res => res.json()).then(res => {
           if(res){
             this.title = res.title
             this.body = res.body
