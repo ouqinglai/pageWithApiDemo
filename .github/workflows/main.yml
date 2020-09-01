@@ -3,18 +3,15 @@ name: Node.js CI
 on: [push]
 
 jobs:
-  build:
-
+  hello_world_job:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-
+    name: A job to say hello
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Hello world action step
+      id: hello
+      uses: action.yml
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: node index.js
+        who-to-greet: 'Mona the Octocat111'
+    # Use the output from the `hello` step
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
