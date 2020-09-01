@@ -1,19 +1,12 @@
-name: Node.js CI
-
-on: [push]
+name: Hello
+on: push
 
 jobs:
-  hello_world_job:
+  hello:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Hello
     steps:
-    - uses: actions/checkout@master
-      name: Checkout
-    - uses: ././.github/actions/action
-      name: Hello world action step
-      id: hello
-      with:
-        who-to-greet: 'Mona the Octocat111'
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: run hello action
+        uses: ./.github/actions/test
