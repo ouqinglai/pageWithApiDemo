@@ -9,18 +9,17 @@ async function run() {
     core.info(`Waiting ${ms} milliseconds ...`);
 
     let result = await new Promise(resolve => {
-      setTimeout(() => {
-        resolve({ a: 1 })
-      }, 1000)
+      // setTimeout(() => {
+      //   resolve({ a: 1 })
+      // }, 1000)
 
-      // fetch('https://okex.me/api/swap/v3/instruments').then(res => res.json())
-      // .then(res => {
-      //   resolve(res[0])
-      // })
+      fetch('https://api.github.com/repos/ouqinglai/pageWithApiDemo/issues/1').then(res => res.json())
+      .then(res => {
+        resolve({title: res.title})
+      })
     })
 
     console.log(111, JSON.stringify(result, null, 2)); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    console.log(22,fetch)
 
     core.setOutput('time', new Date().toTimeString());
   } catch (error) {
