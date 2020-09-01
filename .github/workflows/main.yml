@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
       name: Checkout
-    - uses: ./.github/actions/action
+    - uses: ././.github/actions/action
       name: Hello world action step
       id: hello
       with:
