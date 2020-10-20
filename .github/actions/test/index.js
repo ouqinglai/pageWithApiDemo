@@ -8,7 +8,7 @@ async function run() {
   try {
     // const ms = core.getInput('milliseconds');
     // core.info(`Waiting ${ms} milliseconds ...`);
-console.log(888,github.event.inputs.location)
+console.log(888,JSON.stringify(github.event || {}))
     // let result = await new Promise(resolve => {
     //   // setTimeout(() => {
     //   //   resolve({ a: 1 })
